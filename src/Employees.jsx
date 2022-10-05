@@ -98,8 +98,14 @@ const Employees = () => {
         setTeam(e.target.value)
     }
 
-    const handleEmployeeCardClick = () => {
-        console.log('handleEmployeeClick')
+    const handleEmployeeCardClick = (e) => {
+        const transformedEmployees = employees.map((employee)=> 
+            (employee.id === parseInt(e.currentTarget.id)) ? 
+                (employee.teamName === selectedTeam) ? {...employee, teamName: ''}:{...employee, teamName: selectedTeam}
+             : employee
+        )
+
+        setEmployees(transformedEmployees)
     }
 
 
@@ -119,7 +125,7 @@ const Employees = () => {
                 <div className='col-8'>
                     <div className='card-collection'>
                         {employees.map((item) => (
-                            <div key={item.id} className="card" style={{cursor: "pointer"}} onClick={handleEmployeeCardClick}>
+                            <div  key={item.id} id={item.id} className={(item.teamName === selectedTeam ? 'card m-2 standout' : 'card m-2')} style={{cursor: "pointer"}} onClick={handleEmployeeCardClick}>
                                 <img src={(item.gender === 'male') ? maleProfile : femaleProfile} className="card-img-top" />
                                 <div className='card-body'>
                                     <h5 className='card-title'>Full name: {item.fullName}</h5>
