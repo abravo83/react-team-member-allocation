@@ -98,6 +98,10 @@ const Employees = () => {
         setTeam(e.target.value)
     }
 
+    const handleEmployeeCardClick = () => {
+        console.log('handleEmployeeClick')
+    }
+
 
     return (
         <main className='container'>
@@ -115,8 +119,8 @@ const Employees = () => {
                 <div className='col-8'>
                     <div className='card-collection'>
                         {employees.map((item) => (
-                            <div key={item.id} className="card" style={{cursor: "pointer"}}>
-                                <img src={(item.gender === 'male')? maleProfile : femaleProfile} className="card-img-top" />
+                            <div key={item.id} className="card" style={{cursor: "pointer"}} onClick={handleEmployeeCardClick}>
+                                <img src={(item.gender === 'male') ? maleProfile : femaleProfile} className="card-img-top" />
                                 <div className='card-body'>
                                     <h5 className='card-title'>Full name: {item.fullName}</h5>
                                     <p className='card-text'><b>Designation:</b> {item.designation}</p>
