@@ -10,7 +10,6 @@ function App() {
     <main>
       <Header />
       <Employees />
-      <Content />
       <Footer />
     </main>
   );

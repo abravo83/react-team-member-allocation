@@ -92,7 +92,7 @@ const Employees = () => {
 
     return (
         <div>
-            {employees.map((item) => <p>{item.fullName}</p>)}
+            {employees.map((item) => <p key={item.id}>{item.fullName}</p>)}
         </div>
     );
 }
