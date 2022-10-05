@@ -98,7 +98,6 @@ function App() {
   );
 
   const handleTeamSelectionChange = (e) => {
-      console.log(e)
       setTeam(e.target.value)
   }
 
@@ -116,7 +115,12 @@ function App() {
   return (
     <main>
       <Header />
-      <Employees />
+      <Employees 
+        employees={employees}
+        selectedTeam={selectedTeam}
+        handleEmployeeCardClick={handleEmployeeCardClick}
+        handleTeamSelectionChange={handleTeamSelectionChange}               
+      />
       <Footer />
     </main>
   );
