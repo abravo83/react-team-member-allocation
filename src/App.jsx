@@ -4,11 +4,11 @@ import Header from './Header'
 import Content from './Content'
 import Footer from './Footer'
 import Employees from './Employees';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   
-  const [selectedTeam, setTeam] = useState("TeamB");
+  const [selectedTeam, setTeam] = useState(JSON.parse(localStorage.getItem('selectedTeam'))||"TeamB");
 
   const [employees, setEmployees] = useState(
       [{
@@ -96,6 +96,18 @@ function App() {
           teamName: "TeamD"
         }]
   );
+
+  useEffect(()=>{
+
+    localStorage.setItem('employeeList', JSON.stringify(employees))
+
+  },[employees])
+
+  useEffect(()=>{
+
+    localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam))
+
+  },[selectedTeam])
 
   const handleTeamSelectionChange = (e) => {
       setTeam(e.target.value)
